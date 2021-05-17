@@ -4,7 +4,7 @@ using System.Collections;
 
 public class HeroBehavior : MonoBehaviour {
 
-    public EggStatSystem mEggStat = null;
+    public LaserStatSystem mLaserStat = null;
     public float speed = 50f;
     public float kHeroRotateSpeed = 90f/2f; // 90-degrees in 2 seconds
     Vector2 mousePos;
@@ -13,7 +13,7 @@ public class HeroBehavior : MonoBehaviour {
     // Use this for initialization
 
     void Start () {
-        Debug.Assert(mEggStat != null);
+        Debug.Assert(mLaserStat != null);
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -83,9 +83,9 @@ public class HeroBehavior : MonoBehaviour {
 
     private void ProcessEggSpwan()
     {
-        if (mEggStat.CanSpawn()) {
+        if (mLaserStat.CanSpawn()) {
             if (Input.GetKey("space"))
-                mEggStat.SpawnAnEgg(transform.position, transform.up);
+                mLaserStat.SpawnAnEgg(transform.position, transform.up);
         }
     }
 }

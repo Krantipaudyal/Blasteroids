@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215585050243407157}
   - component: {fileID: 215585050243407162}
-  - component: {fileID: 1005880635025085845}
+  - component: {fileID: 2133531317436623716}
   m_Layer: 0
   m_Name: GLaser
   m_TagString: Untagged
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f3b20546062690141951a15cae2c56b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1005880635025085845
+--- !u!114 &2133531317436623716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

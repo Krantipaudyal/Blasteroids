@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GlobalBehavior : MonoBehaviour {
     public static GlobalBehavior sTheGlobalBehavior = null;
-    public EggStatSystem mEggStat = null;
+    public LaserStatSystem mLaserStat = null;
 
     public Text mGameStateEcho = null;  // Defined in UnityEngine.UI
    
@@ -27,7 +27,7 @@ public class GlobalBehavior : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Debug.Assert(mEggStat != null);
+        Debug.Assert(mLaserStat != null);
 
         GlobalBehavior.sTheGlobalBehavior = this;  // Singleton pattern
 
@@ -142,16 +142,9 @@ public class GlobalBehavior : MonoBehaviour {
     }
     #endregion
 
-    #region Game Stat Echo support
-    public void DestroyAnEgg()
-    {
-        mEggStat.DecEggCount();
-    }
-
     public void UpdateGameState(string msg)
     {
         mGameStateEcho.text = msg;
     }
 
-    #endregion
 }
