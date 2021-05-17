@@ -9,6 +9,8 @@ public class HeroBehavior : MonoBehaviour {
     public float kHeroRotateSpeed = 90f/2f; // 90-degrees in 2 seconds
     Vector2 mousePos;
     public Rigidbody2D rb2d;
+    public int heroHealth=4;
+    public int timesHit=0;
 
     // Use this for initialization
 
@@ -43,6 +45,22 @@ public class HeroBehavior : MonoBehaviour {
         //UpdateMotion();
         BoundPosition();
         ProcessEggSpwan();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Debug.Log("Emeny OnTriggerEnter");
+        if(collision.gameObject.CompareTag("Asteroid"))
+        {
+            print("collided with" + collision.gameObject.name);
+            Destroy(collision.gameObject);
+            heroHealth--;
+            if (heroHealth==0)
+            {
+                Destroy(gameObject);
+            }
+            GlobalBehavior.sTheGlobalBehavior.UpdateHeroHealth("Ship Health: " + heroHealth);
+        }
     }
 
     private void UpdateMotion()

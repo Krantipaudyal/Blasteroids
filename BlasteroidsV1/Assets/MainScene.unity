@@ -313,6 +313,7 @@ RectTransform:
   - {fileID: 381550213}
   - {fileID: 1845509864}
   - {fileID: 1237343049}
+  - {fileID: 687577961}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -462,6 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mLaserStat: {fileID: 358654687}
   mGameStateEcho: {fileID: 381550214}
+  mHeroHealth: {fileID: 687577962}
 --- !u!114 &358654687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,6 +711,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &687577960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 687577961}
+  - component: {fileID: 687577963}
+  - component: {fileID: 687577962}
+  m_Layer: 5
+  m_Name: ShipHealthEcho
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &687577961
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687577960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 114229648}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 98, y: 35}
+  m_SizeDelta: {x: 148.81, y: 26.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &687577962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687577960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Ship Health: 4'
+--- !u!222 &687577963
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687577960}
+  m_CullTransparentMesh: 0
 --- !u!1 &853267489
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,7 +1042,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -725.3141, y: 65.80402}
+  m_AnchoredPosition: {x: -658, y: 7.804}
   m_SizeDelta: {x: 184.6282, y: 15.608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1237343050
@@ -1064,6 +1145,7 @@ GameObject:
   - component: {fileID: 1660550320}
   - component: {fileID: 1660550322}
   - component: {fileID: 1660550321}
+  - component: {fileID: 1660550323}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -1151,7 +1233,9 @@ MonoBehaviour:
   mLaserStat: {fileID: 358654687}
   speed: 50
   kHeroRotateSpeed: 45
-  rb2d: {fileID: 0}
+  rb2d: {fileID: 1660550321}
+  heroHealth: 4
+  timesHit: 0
 --- !u!50 &1660550321
 Rigidbody2D:
   serializedVersion: 4
@@ -1160,7 +1244,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660550317}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1223,6 +1307,32 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1660550323
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660550317}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
 --- !u!1 &1775254616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1412,7 @@ Transform:
   m_GameObject: {fileID: 1775254616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.7485, y: -0.4322, z: 0}
-  m_LocalScale: {x: 24.621033, y: 21.48828, z: 0}
+  m_LocalScale: {x: 28, y: 21.48828, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6

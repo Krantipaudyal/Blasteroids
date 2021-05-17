@@ -8,10 +8,10 @@ public class GlobalBehavior : MonoBehaviour {
     public LaserStatSystem mLaserStat = null;
 
     public Text mGameStateEcho = null;  // Defined in UnityEngine.UI
-   
+	public Text mHeroHealth = null;
 
-    #region World Bound support
-    private Bounds mWorldBound;  // this is the world bound
+	#region World Bound support
+	private Bounds mWorldBound;  // this is the world bound
 	private Vector2 mWorldMin;	// Better support 2D interactions
 	private Vector2 mWorldMax;
 	private Vector2 mWorldCenter;
@@ -146,5 +146,9 @@ public class GlobalBehavior : MonoBehaviour {
     {
         mGameStateEcho.text = msg;
     }
+	public void UpdateHeroHealth(string msg)
+	{
+		mHeroHealth.text = msg;
+	}
 
 }
