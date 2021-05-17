@@ -15,8 +15,7 @@ public class EnemyBehavior : MonoBehaviour {
 		transform.position += (mSpeed * Time.smoothDeltaTime) * transform.up;
 		GlobalBehavior globalBehavior = GameObject.Find ("GameManager").GetComponent<GlobalBehavior>();
 		
-		GlobalBehavior.WorldBoundStatus status =
-			globalBehavior.ObjectCollideWorldBound(GetComponent<Renderer>().bounds);
+		GlobalBehavior.WorldBoundStatus status = globalBehavior.ObjectCollideWorldBound(GetComponent<Renderer>().bounds);
 			
 		if (status != GlobalBehavior.WorldBoundStatus.Inside) {
 			Debug.Log("collided position: " + this.transform.position);

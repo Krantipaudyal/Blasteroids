@@ -414,7 +414,7 @@ SpriteRenderer:
   m_Size: {x: 6, y: 5.81}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &358654684
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 358654684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5087ea1a22a06b249bb22cf7a68d05c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 53f24f6db1439634e9e33b2d94e106ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mLaserStat: {fileID: 358654687}
@@ -1042,7 +1042,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -658, y: 7.804}
+  m_AnchoredPosition: {x: -658, y: 7.8039856}
   m_SizeDelta: {x: 184.6282, y: 15.608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1237343050
