@@ -84,7 +84,7 @@ public class HeroBehavior : MonoBehaviour {
     private void ProcessEggSpwan()
     {
         if (mLaserStat.CanSpawn()) {
-            if (Input.GetKey("space"))
+            if (Input.GetKey("space")|| Input.GetMouseButtonDown(0))
                 mLaserStat.SpawnAnEgg(transform.position, transform.up);
         }
     }
