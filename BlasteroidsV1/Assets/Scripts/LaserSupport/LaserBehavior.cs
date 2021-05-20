@@ -22,20 +22,17 @@ public class LaserBehavior : MonoBehaviour
         //bool timeToDie = (Time.realtimeSinceStartup - SpawnTime) > 1f;
         if (outside)
         {
-            GlobalBehavior.sTheGlobalBehavior.mLaserStat.IncScore(100);
+            //GlobalBehavior.sTheGlobalBehavior.mLaserStat.IncScore(100);
             Destroy(gameObject);  // this.gameObject, this is destroying the game object
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Debug.Log("Egg OnTriggerEnter");
-        // Collision with hero (especially when first spawned) does not count
-        //Will add more for different asteroids since they will be worth different amounts of points
-        if (collision.gameObject.name != "Asteroid")
+        if (collision.gameObject.tag == "Asteroid")
         {
-            Destroy(this);
-            GlobalBehavior.sTheGlobalBehavior.mLaserStat.IncScore(100);
+            //Debug.Log("collision");
+            Destroy(gameObject);
         }
     }
 

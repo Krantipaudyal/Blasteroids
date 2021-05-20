@@ -8,7 +8,7 @@ public class GlobalBehavior : MonoBehaviour {
     public LaserStatSystem mLaserStat = null;
 
     public Text mGameStateEcho = null;  // Defined in UnityEngine.UI
-	public Text mHeroHealth = null;
+	public Text mShipHealth = null;
 
 	#region World Bound support
 	private Bounds mWorldBound;  // this is the world bound
@@ -142,13 +142,14 @@ public class GlobalBehavior : MonoBehaviour {
     }
     #endregion
 
-    public void UpdateGameState(string msg)
+    public void UpdateScore(string msg)
     {
         mGameStateEcho.text = msg;
     }
-	public void UpdateHeroHealth(string msg)
+
+	public void UpdateShipHealth(string msg)
 	{
-		mHeroHealth.text = msg;
+		mShipHealth.text = msg;
 	}
 
 }

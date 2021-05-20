@@ -44,10 +44,10 @@ public class HeroBehavior : MonoBehaviour {
         transform.position = pos;
         //UpdateMotion();
         BoundPosition();
-        ProcessEggSpwan();
+        ProcessLaserSpwan();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Debug.Log("Emeny OnTriggerEnter");
         if(collision.gameObject.CompareTag("Asteroid"))
@@ -59,7 +59,7 @@ public class HeroBehavior : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
-            GlobalBehavior.sTheGlobalBehavior.UpdateHeroHealth("Ship Health: " + heroHealth);
+            GlobalBehavior.sTheGlobalBehavior.UpdateShipHealth("Ship Health: " + heroHealth);
         }
     }
 
@@ -99,11 +99,11 @@ public class HeroBehavior : MonoBehaviour {
         }
     }
 
-    private void ProcessEggSpwan()
+    private void ProcessLaserSpwan()
     {
         if (mLaserStat.CanSpawn()) {
             if (Input.GetKey("space")|| Input.GetMouseButtonDown(0))
-                mLaserStat.SpawnAnEgg(transform.position, transform.up);
+                mLaserStat.SpawnLaser(transform.position, transform.up);
         }
     }
 }

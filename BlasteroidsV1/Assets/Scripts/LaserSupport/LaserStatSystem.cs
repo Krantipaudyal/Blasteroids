@@ -13,7 +13,7 @@ public class LaserStatSystem : MonoBehaviour
     // Spawning support
     private GameObject laser = null;
     // handle correct cool off time
-    private float mSpawnEggAt = 0f;
+    private float mSpawnLaserAt = 0f;
 
     // Score
     private int difficulty = 1;
@@ -42,21 +42,21 @@ public class LaserStatSystem : MonoBehaviour
 
     public float TimeTillNext()
     {
-        float sinceLastEgg = Time.realtimeSinceStartup - mSpawnEggAt;
-        return mLaserInterval.value - sinceLastEgg;
+        float sinceLastLaser = Time.realtimeSinceStartup - mSpawnLaserAt;
+        return mLaserInterval.value - sinceLastLaser;
     }
 
-    public void SpawnAnEgg(Vector3 p, Vector3 dir)
+    public void SpawnLaser(Vector3 p, Vector3 dir)
     {
         Debug.Assert(CanSpawn());
         GameObject e = GameObject.Instantiate(laser);// as GameObject;
-        LaserBehavior egg = e.GetComponent<LaserBehavior>(); // Shows how to get the script from GameObject
-        if (null != egg)
+        LaserBehavior Laser = e.GetComponent<LaserBehavior>(); // Shows how to get the script from GameObject
+        if (null != Laser)
         {
             e.transform.position = p;
             e.transform.up = dir;
         }
-        mSpawnEggAt = Time.realtimeSinceStartup;
+        mSpawnLaserAt = Time.realtimeSinceStartup;
     }
     #endregion
 
@@ -76,7 +76,7 @@ public class LaserStatSystem : MonoBehaviour
 
     private void EchoScore()
     {
-        GlobalBehavior.sTheGlobalBehavior.UpdateGameState("Score: " + score);
+        GlobalBehavior.sTheGlobalBehavior.UpdateScore("Score: " + score);
     }
     public void DecScore(int amount) 
     {
