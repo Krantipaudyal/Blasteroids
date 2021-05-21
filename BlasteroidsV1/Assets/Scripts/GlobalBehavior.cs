@@ -9,6 +9,9 @@ public class GlobalBehavior : MonoBehaviour {
 
     public Text mGameStateEcho = null;  // Defined in UnityEngine.UI
 	public Text mShipHealth = null;
+	public Text mPlanetHealth = null;
+	//public LaserStatSystem mLaserStat = null;
+
 
 	#region World Bound support
 	private Bounds mWorldBound;  // this is the world bound
@@ -151,5 +154,11 @@ public class GlobalBehavior : MonoBehaviour {
 	{
 		mShipHealth.text = msg;
 	}
+
+	public void UpdatePlanetHealth(string msg)
+	{
+		mPlanetHealth.text = msg;
+	}
+
 
 }

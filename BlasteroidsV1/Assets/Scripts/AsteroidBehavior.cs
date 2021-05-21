@@ -10,7 +10,10 @@ public class AsteroidBehavior : MonoBehaviour
 
     private void Update()
     {
-        
+        if (transform.position.y <= -85)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

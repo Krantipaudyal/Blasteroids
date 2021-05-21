@@ -218,6 +218,7 @@ RectTransform:
   - {fileID: 1845509864}
   - {fileID: 1237343049}
   - {fileID: 687577961}
+  - {fileID: 1176686628}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -237,6 +238,7 @@ GameObject:
   - component: {fileID: 296167184}
   - component: {fileID: 296167183}
   - component: {fileID: 296167185}
+  - component: {fileID: 296167186}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -256,6 +258,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5dfb4cdb994aa4f928066696973e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planetHealth: 4
+  invTime: 3000
+  hurtTime: 30
+  mLaserStat: {fileID: 358654687}
+  fireTime: 90
+  shots: 0
+  shotsTot: 4
 --- !u!4 &296167184
 Transform:
   m_ObjectHideFlags: 0
@@ -321,6 +330,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &296167186
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296167182}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.25
 --- !u!1 &358654684
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +393,7 @@ MonoBehaviour:
   mLaserStat: {fileID: 358654687}
   mGameStateEcho: {fileID: 381550214}
   mShipHealth: {fileID: 687577962}
+  mPlanetHealth: {fileID: 1176686629}
 --- !u!114 &358654687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,6 +949,85 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1176686627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1176686628}
+  - component: {fileID: 1176686630}
+  - component: {fileID: 1176686629}
+  m_Layer: 5
+  m_Name: PlanetHealthEcho
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1176686628
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176686627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 114229648}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 97, y: 48.5}
+  m_SizeDelta: {x: 148.81, y: 26.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1176686629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176686627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Planet Health: 4'
+--- !u!222 &1176686630
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176686627}
+  m_CullTransparentMesh: 0
 --- !u!1 &1237343048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1257,6 @@ MonoBehaviour:
   kHeroRotateSpeed: 45
   rb2d: {fileID: 1660550321}
   heroHealth: 4
-  timesHit: 0
 --- !u!50 &1660550321
 Rigidbody2D:
   serializedVersion: 4

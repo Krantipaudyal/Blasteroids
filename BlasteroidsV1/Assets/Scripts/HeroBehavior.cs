@@ -10,7 +10,6 @@ public class HeroBehavior : MonoBehaviour {
     Vector2 mousePos;
     public Rigidbody2D rb2d;
     public int heroHealth=4;
-    public int timesHit=0;
 
     // Use this for initialization
 
@@ -63,25 +62,7 @@ public class HeroBehavior : MonoBehaviour {
         }
     }
 
-    private void UpdateMotion()
-    {
-       /* if (Input.GetKey(KeyCode.A))
-        {
-            transform.position+=;
-            //pos += ((speed * Time.smoothDeltaTime) * transform.up);
-        }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            speed -= 0.1f;
-            //pos -= ((speed * Time.smoothDeltaTime) * transform.up);
-        }*/
-        /* mHeroSpeed += Input.GetAxis("Vertical");
-         Vector3 pos = transform.position;
-         transform.position += transform.up * (mHeroSpeed * Time.smoothDeltaTime);
-         transform.Rotate(Vector3.forward, -1f * Input.GetAxis("Horizontal") *
-                                     (kHeroRotateSpeed * Time.smoothDeltaTime));*/
-    }
 
     private void BoundPosition()
     {
