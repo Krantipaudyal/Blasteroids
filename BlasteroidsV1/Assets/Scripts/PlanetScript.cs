@@ -10,17 +10,20 @@ public class PlanetScript : MonoBehaviour
         hitState,
         invincibleState,
         fireState,
+        flBlueState,
+        flWhiteState,
     };
 
     public int planetHealth = 4;
     private PlanetState pState = PlanetState.normalState;
-    public float invTime = 4000f;
+    public float invTime = 5000f;
     public float hurtTime = 30f;
     private int stateFrameTick = 0;
     public LaserStatSystem mLaserStat = null;
     public float fireTime = 90f;
     public int shots = 0;
     public int shotsTot = 4;
+    public int flashes = 0;
 
 
     // Start is called before the first frame update
@@ -61,7 +64,7 @@ public class PlanetScript : MonoBehaviour
         {
             //print("collided with" + collision.gameObject.name);
             Destroy(collision.gameObject);
-            if(pState != PlanetState.invincibleState)
+            if(pState != PlanetState.invincibleState && pState != PlanetState.flBlueState && pState != PlanetState.flWhiteState)
             {
                 planetHealth--;
                 if (planetHealth == 0)
@@ -108,6 +111,12 @@ public class PlanetScript : MonoBehaviour
             case PlanetState.fireState:
                 ServiceFireState();
                 break;
+            case PlanetState.flWhiteState:
+                ServiceflWhiteState();
+                break;
+            case PlanetState.flBlueState:
+                ServiceflBlueState();
+                break;
         }
     }
 
@@ -121,15 +130,16 @@ public class PlanetScript : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
         if (stateFrameTick > invTime)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            //gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             stateFrameTick = 0;
-            pState = PlanetState.normalState;
+            pState = PlanetState.flWhiteState;
         }
         else
         {
             stateFrameTick++;
         }
     }
+
     private void ServiceHitState()
     {
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
@@ -170,6 +180,43 @@ public class PlanetScript : MonoBehaviour
         }
     }
 
+    private void ServiceflBlueState()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+        if (stateFrameTick > hurtTime)
+        {
+            stateFrameTick = 0;
+            flashes++;
+            if (flashes >= 28)
+            {
+                flashes = 0;
+                pState = PlanetState.normalState;
+            }
+            else
+            {
+                pState = PlanetState.flWhiteState;
+            }
+        }
+        else
+        {
+            stateFrameTick++;
+        }
+    }
+
+    private void ServiceflWhiteState()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        if (stateFrameTick > hurtTime)
+        {
+            stateFrameTick = 0;
+            flashes++;
+            pState = PlanetState.flBlueState;
+        }
+        else
+        {
+            stateFrameTick++;
+        }
+    }
 
     private void ProcessLaserSpwan()
     {
