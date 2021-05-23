@@ -57,6 +57,7 @@ public class HeroBehavior : MonoBehaviour {
             if (heroHealth==0)
             {
                 Destroy(gameObject);
+                GlobalBehavior.sTheGlobalBehavior.UpdateGameOver();
             }
             GlobalBehavior.sTheGlobalBehavior.UpdateShipHealth("Ship Health: " + heroHealth);
         }

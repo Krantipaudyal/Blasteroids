@@ -70,6 +70,7 @@ public class PlanetScript : MonoBehaviour
                 if (planetHealth == 0)
                 {
                     Destroy(gameObject);
+                    GlobalBehavior.sTheGlobalBehavior.UpdateGameOver();
                 }
                 planetHit();
                 GlobalBehavior.sTheGlobalBehavior.UpdatePlanetHealth("Planet Health: " + planetHealth);

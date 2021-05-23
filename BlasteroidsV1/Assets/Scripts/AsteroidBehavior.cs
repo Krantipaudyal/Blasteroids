@@ -10,7 +10,7 @@ public class AsteroidBehavior : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y <= -85)
+        if (transform.position.y <= -88)
         {
             Destroy(gameObject);
         }

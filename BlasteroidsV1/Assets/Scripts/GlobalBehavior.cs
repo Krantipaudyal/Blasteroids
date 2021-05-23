@@ -1,15 +1,21 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 public class GlobalBehavior : MonoBehaviour {
     public static GlobalBehavior sTheGlobalBehavior = null;
     public LaserStatSystem mLaserStat = null;
 
+
     public Text mGameStateEcho = null;  // Defined in UnityEngine.UI
 	public Text mShipHealth = null;
 	public Text mPlanetHealth = null;
+	public Text mGameOver = null;
+	public Text mReset = null;
+	private bool isOver = false;
 	//public LaserStatSystem mLaserStat = null;
 
 
@@ -41,12 +47,17 @@ public class GlobalBehavior : MonoBehaviour {
         #endregion
     }
 
-    /* Update is called once per frame 
+     //Update is called once per frame 
 	void Update () {
-		mMainCamera.transform.position += 0.1f * Vector3.one;
-		mMainCamera.orthographicSize += 1.0f;
+		if (isOver == true)
+        {
+			if (Input.GetKey(KeyCode.R))
+			{
+				SceneManager.LoadScene("MainScene");
+			}
+		}
 	
-	} */
+	} 
 
     #region Game Window World size bound support
     public enum WorldBoundStatus {
@@ -160,5 +171,11 @@ public class GlobalBehavior : MonoBehaviour {
 		mPlanetHealth.text = msg;
 	}
 
+	public void UpdateGameOver()
+    {
+		mGameOver.text = "Game Over";
+		mReset.text = "Press R to try again!";
+		isOver = true;
+    }
 
 }
