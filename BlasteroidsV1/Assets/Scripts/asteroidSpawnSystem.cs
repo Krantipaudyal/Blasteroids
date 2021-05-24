@@ -23,7 +23,7 @@ public class asteroidSpawnSystem : MonoBehaviour
     {
         float x,y,z;
         Vector3 pos;
-        if(Random.Range(0, 1000) == 0)
+        if(Random.Range(0, 3000) == 0)
         {
             x = Random.Range(-100,100);
             y = 88f;
@@ -33,7 +33,7 @@ public class asteroidSpawnSystem : MonoBehaviour
 
             // Instantiate(asteroid, pos, Quaternion.identity);
         }
-        if(Random.Range(0, 1000) == 999)
+        if(Random.Range(0, 3000) == 999)
         {
             x = Random.Range(-100,100);
             y = 88f;
@@ -43,7 +43,7 @@ public class asteroidSpawnSystem : MonoBehaviour
 
             // Instantiate(asteroid, pos, Quaternion.identity);
         }
-        if(Random.Range(0, 1000) == 997)
+        if(Random.Range(0, 3000) == 997)
         {
             x = Random.Range(-100,100);
             y = 88f;

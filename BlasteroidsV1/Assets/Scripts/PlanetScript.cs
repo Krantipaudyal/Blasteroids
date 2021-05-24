@@ -26,6 +26,9 @@ public class PlanetScript : MonoBehaviour
     public int flashes = 0;
 
 
+    private bool hasBeenFireState = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +40,18 @@ public class PlanetScript : MonoBehaviour
     {
         updateFSM();
         transform.Rotate(Vector3.forward, -0.01f);
-       // ProcessLaserSpwan();
+        // ProcessLaserSpwan();
+        
+
+
+        if(((GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() % 1000) == 0) && 
+            GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() != 0 &&
+            GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetCanUseAbility())
+        {
+            GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
+            pState = PlanetState.fireState;
+        }
+
 
         //This is just to test the invincible state, delete later
         if (Input.GetKeyDown(KeyCode.I))

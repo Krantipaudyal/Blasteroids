@@ -19,6 +19,8 @@ public class LaserStatSystem : MonoBehaviour
     private int difficulty = 1;
     private int score = 0;
 
+    private bool canUseAbility = true;
+
     void Start()
     {
         Debug.Assert(mLaserInterval != null);
@@ -32,6 +34,21 @@ public class LaserStatSystem : MonoBehaviour
     void Update()
     {
         UpdateCoolDownUI();
+        
+    }
+
+    public bool GetCanUseAbility()
+    {
+        return canUseAbility;
+    }
+    public void UseAbility()
+    {
+        canUseAbility = false;
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 
     #region Spawning support
@@ -48,7 +65,7 @@ public class LaserStatSystem : MonoBehaviour
 
     public void SpawnLaser(Vector3 p, Vector3 dir)
     {
-        Debug.Assert(CanSpawn());
+        //Debug.Assert(CanSpawn());
         GameObject e = GameObject.Instantiate(laser);// as GameObject;
         LaserBehavior Laser = e.GetComponent<LaserBehavior>(); // Shows how to get the script from GameObject
         if (null != Laser)
@@ -85,7 +102,8 @@ public class LaserStatSystem : MonoBehaviour
     }
     public void IncScore(int amount) 
     { 
-        score += amount; 
+        score += amount;
+        canUseAbility = true;
         EchoScore(); 
     }
 }
