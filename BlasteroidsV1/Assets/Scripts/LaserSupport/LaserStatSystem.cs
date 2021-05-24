@@ -34,7 +34,7 @@ public class LaserStatSystem : MonoBehaviour
     void Update()
     {
         UpdateCoolDownUI();
-        
+
     }
 
     public bool GetCanUseAbility()
@@ -95,15 +95,15 @@ public class LaserStatSystem : MonoBehaviour
     {
         GlobalBehavior.sTheGlobalBehavior.UpdateScore("Score: " + score);
     }
-    public void DecScore(int amount) 
+    public void DecScore(int amount)
     {
-        score -= amount; 
-        EchoScore(); 
+        score -= amount;
+        EchoScore();
     }
-    public void IncScore(int amount) 
-    { 
+    public void IncScore(int amount)
+    {
         score += amount;
         canUseAbility = true;
-        EchoScore(); 
+        EchoScore();
     }
 }

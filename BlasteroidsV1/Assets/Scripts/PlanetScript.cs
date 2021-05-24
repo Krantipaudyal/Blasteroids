@@ -32,7 +32,7 @@ public class PlanetScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -41,20 +41,29 @@ public class PlanetScript : MonoBehaviour
         updateFSM();
         transform.Rotate(Vector3.forward, -0.01f);
         // ProcessLaserSpwan();
-        
 
 
-        if(((GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() % 1000) == 0) && 
+
+        if (((GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() % 1000) == 0) &&
             GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() != 0 &&
             GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetCanUseAbility())
         {
-            GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
-            pState = PlanetState.fireState;
+            if((GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() % 2000) == 0)
+            {
+                GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
+                pState = PlanetState.invincibleState;
+            }
+            else
+            {
+                GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
+                pState = PlanetState.fireState;
+            }
+            
         }
 
 
         //This is just to test the invincible state, delete later
-        if (Input.GetKeyDown(KeyCode.I))
+      /*  if (Input.GetKeyDown(KeyCode.I))
         {
             stateFrameTick = 0;
             pState = PlanetState.invincibleState;
@@ -66,7 +75,7 @@ public class PlanetScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             pState = PlanetState.fireState;
-        }
+        }*/
     }
 
 
@@ -78,7 +87,7 @@ public class PlanetScript : MonoBehaviour
         {
             //print("collided with" + collision.gameObject.name);
             Destroy(collision.gameObject);
-            if(pState != PlanetState.invincibleState && pState != PlanetState.flBlueState && pState != PlanetState.flWhiteState)
+            if (pState != PlanetState.invincibleState && pState != PlanetState.flBlueState && pState != PlanetState.flWhiteState)
             {
                 planetHealth--;
                 if (planetHealth == 0)
@@ -89,7 +98,7 @@ public class PlanetScript : MonoBehaviour
                 planetHit();
                 GlobalBehavior.sTheGlobalBehavior.UpdatePlanetHealth("Planet Health: " + planetHealth);
             }
-            
+
         }
     }
 
@@ -187,7 +196,7 @@ public class PlanetScript : MonoBehaviour
                 shots = 0;
                 pState = PlanetState.normalState;
             }
-            
+
         }
         else
         {
@@ -236,10 +245,10 @@ public class PlanetScript : MonoBehaviour
     private void ProcessLaserSpwan()
     {
 
-       for (int i = -100; i <= 100; i += 5)
+        for (int i = -100; i <= 100; i += 5)
         {
             mLaserStat.SpawnLaser(new Vector3(i, -60), new Vector3(i, 300));
         }
-       
+
     }
 }
