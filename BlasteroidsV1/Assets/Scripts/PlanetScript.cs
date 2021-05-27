@@ -16,11 +16,11 @@ public class PlanetScript : MonoBehaviour
 
     public int planetHealth = 4;
     private PlanetState pState = PlanetState.normalState;
-    public float invTime = 5000f;
-    public float hurtTime = 30f;
+    public float invTime = 1600f;
+    public float hurtTime = 8f;
     private int stateFrameTick = 0;
     public LaserStatSystem mLaserStat = null;
-    public float fireTime = 90f;
+    public float fireTime = 30f;
     public int shots = 0;
     public int shotsTot = 4;
     public int flashes = 0;
@@ -39,7 +39,7 @@ public class PlanetScript : MonoBehaviour
     void Update()
     {
         updateFSM();
-        transform.Rotate(Vector3.forward, -0.01f);
+        transform.Rotate(Vector3.forward, -0.1f);
         // ProcessLaserSpwan();
 
 

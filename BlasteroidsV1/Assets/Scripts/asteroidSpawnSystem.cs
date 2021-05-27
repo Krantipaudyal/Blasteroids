@@ -8,7 +8,7 @@ public class asteroidSpawnSystem : MonoBehaviour
     public GameObject asteroid;
     public GameObject asteroid2;
     public GameObject asteroid3;
-    public int spawnRate = 3000;
+    public int spawnRate = 250;
     void Start()
     {
 
@@ -34,7 +34,7 @@ public class asteroidSpawnSystem : MonoBehaviour
 
             // Instantiate(asteroid, pos, Quaternion.identity);
         }
-        if (Random.Range(0, spawnRate) == 999)
+        if (Random.Range(0, spawnRate) == 1)
         {
             x = Random.Range(-100, 100);
             y = 88f;
@@ -44,7 +44,7 @@ public class asteroidSpawnSystem : MonoBehaviour
 
             // Instantiate(asteroid, pos, Quaternion.identity);
         }
-        if (Random.Range(0, spawnRate) == 997)
+        if (Random.Range(0, spawnRate) == 2)
         {
             x = Random.Range(-100, 100);
             y = 88f;
