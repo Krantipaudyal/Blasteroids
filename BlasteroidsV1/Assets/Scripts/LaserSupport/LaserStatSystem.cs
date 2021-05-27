@@ -10,13 +10,15 @@ public class LaserStatSystem : MonoBehaviour
     public RectTransform mLaserShotTime = null;
     private const float kInitLaserShotSize = 50f;
 
+
+
     // Spawning support
     private GameObject laser = null;
     // handle correct cool off time
     private float mSpawnLaserAt = 0f;
 
     // Score
-    private int difficulty = 1;
+    public int difficulty = 0;
     private int score = 0;
 
     private bool canUseAbility = true;
@@ -33,8 +35,12 @@ public class LaserStatSystem : MonoBehaviour
 
     void Update()
     {
+        if ((score % 1000 == 0) && (score / 100 != difficulty) && score != 0 && difficulty < 190)
+        {
+            difficulty = score / 100;
+            Debug.Log("New Difficulty: " + difficulty);
+        }
         UpdateCoolDownUI();
-
     }
 
     public bool GetCanUseAbility()

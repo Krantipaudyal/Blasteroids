@@ -8,15 +8,22 @@ public class asteroidSpawnSystem : MonoBehaviour
     public GameObject asteroid;
     public GameObject asteroid2;
     public GameObject asteroid3;
-    public int spawnRate = 250;
+    private int difficulty = 0;
+    public int spawnRate = 200;
+
+    private int counter = 0;
     void Start()
     {
 
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        difficulty = GlobalBehavior.sTheGlobalBehavior.mLaserStat.difficulty;
+        spawnRate = 200 - difficulty;
+        //Debug.Log(counter);
+        //counter++;
         spawnAsteroid();
     }
 
@@ -26,6 +33,7 @@ public class asteroidSpawnSystem : MonoBehaviour
         Vector3 pos;
         if (Random.Range(0, spawnRate) == 0)
         {
+            //Debug.Log("Asteroid1");
             x = Random.Range(-100, 100);
             y = 88f;
             z = 0f;
@@ -34,8 +42,9 @@ public class asteroidSpawnSystem : MonoBehaviour
 
             // Instantiate(asteroid, pos, Quaternion.identity);
         }
-        if (Random.Range(0, spawnRate) == 1)
+        if (Random.Range(0, spawnRate) == spawnRate / 2)
         {
+            //Debug.Log("Asteroid2");
             x = Random.Range(-100, 100);
             y = 88f;
             z = 0f;
@@ -44,8 +53,9 @@ public class asteroidSpawnSystem : MonoBehaviour
 
             // Instantiate(asteroid, pos, Quaternion.identity);
         }
-        if (Random.Range(0, spawnRate) == 2)
+        if (Random.Range(0, spawnRate) == spawnRate)
         {
+            //Debug.Log("Asteroid3");
             x = Random.Range(-100, 100);
             y = 88f;
             z = 0f;
