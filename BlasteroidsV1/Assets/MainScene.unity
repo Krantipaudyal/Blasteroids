@@ -346,7 +346,7 @@ MonoBehaviour:
   mLaserStat: {fileID: 358654687}
   fireTime: 90
   shots: 0
-  shotsTot: 4
+  shotsTot: 3
   flashes: 0
 --- !u!4 &296167184
 Transform:
@@ -572,6 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mLaserInterval: {fileID: 1237343050}
   mLaserShotTime: {fileID: 1845509864}
+  difficulty: 0
 --- !u!1 &381550212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,7 +1951,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -292, y: 9.3517}
+  m_AnchoredPosition: {x: -292, y: 9.351685}
   m_SizeDelta: {x: 31.9247, y: 47.2966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1845509865

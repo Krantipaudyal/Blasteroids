@@ -22,7 +22,7 @@ public class PlanetScript : MonoBehaviour
     public LaserStatSystem mLaserStat = null;
     public float fireTime = 30f;
     public int shots = 0;
-    public int shotsTot = 4;
+    public int shotsTot = 3;
     public int flashes = 0;
 
 
@@ -42,28 +42,48 @@ public class PlanetScript : MonoBehaviour
         transform.Rotate(Vector3.forward, -0.1f);
         // ProcessLaserSpwan();
 
-
-
-        if (((GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() % 1000) == 0) &&
-            GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() != 0 &&
-            GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetCanUseAbility())
+        if (GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() > 10000)
         {
-            if((GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() % 2000) == 0)
+            int newScore = GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() - 10000;
+            if (((newScore % 1500) == 0) &&
+            newScore!= 0 &&
+            GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetCanUseAbility())
             {
-                GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
-                pState = PlanetState.invincibleState;
+                if ((newScore % 3000) == 0)
+                {
+                    GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
+                    pState = PlanetState.invincibleState;
+                }
+                else
+                {
+                    GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
+                    pState = PlanetState.fireState;
+                }
+
             }
-            else
+        }
+        else
+        {
+            if (((GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() % 1000) == 0) &&
+                GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() != 0 &&
+                GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetCanUseAbility())
             {
-                GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
-                pState = PlanetState.fireState;
+                if ((GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() % 2000) == 0)
+                {
+                    GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
+                    pState = PlanetState.invincibleState;
+                }
+                else
+                {
+                    GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
+                    pState = PlanetState.fireState;
+                }
+
             }
-            
         }
 
-
         //This is just to test the invincible state, delete later
-      /*  if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             stateFrameTick = 0;
             pState = PlanetState.invincibleState;
@@ -75,7 +95,7 @@ public class PlanetScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             pState = PlanetState.fireState;
-        }*/
+        }
     }
 
 
@@ -87,7 +107,7 @@ public class PlanetScript : MonoBehaviour
         {
             //print("collided with" + collision.gameObject.name);
             Destroy(collision.gameObject);
-            if (pState != PlanetState.invincibleState && pState != PlanetState.flBlueState && pState != PlanetState.flWhiteState)
+            if (pState == PlanetState.normalState || pState == PlanetState.hitState)
             {
                 planetHealth--;
                 if (planetHealth == 0)

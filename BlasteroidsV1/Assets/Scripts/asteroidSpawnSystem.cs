@@ -67,7 +67,8 @@ public class asteroidSpawnSystem : MonoBehaviour
     }
 
     public void changeSpawn(int newSpawn)
-    {
-        spawnRate = newSpawn;
+    {     
+            spawnRate = newSpawn;
+        
     }
 }

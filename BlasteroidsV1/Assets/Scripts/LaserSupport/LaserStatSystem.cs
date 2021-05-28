@@ -35,7 +35,7 @@ public class LaserStatSystem : MonoBehaviour
 
     void Update()
     {
-        if ((score % 1000 == 0) && (score / 100 != difficulty) && score != 0 && difficulty < 190)
+        if ((score % 1000 == 0) && (score / 100 != difficulty) && score != 0 && difficulty < 160)
         {
             difficulty = score / 100;
             Debug.Log("New Difficulty: " + difficulty);
