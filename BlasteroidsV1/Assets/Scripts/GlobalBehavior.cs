@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GlobalBehavior : MonoBehaviour {
     public static GlobalBehavior sTheGlobalBehavior = null;
     public LaserStatSystem mLaserStat = null;
+	public asteroidSpawnSystem mAstSpawn= null;
 
 
     public Text mGameStateEcho = null;  // Defined in UnityEngine.UI
@@ -16,6 +17,7 @@ public class GlobalBehavior : MonoBehaviour {
 	public Text mGameOver = null;
 	public Text mReset = null;
 	private bool isOver = false;
+	public AudioSource audioSource=null;
 	//public LaserStatSystem mLaserStat = null;
 
 
@@ -37,8 +39,9 @@ public class GlobalBehavior : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Debug.Assert(mLaserStat != null);
-
-        GlobalBehavior.sTheGlobalBehavior = this;  // Singleton pattern
+		Debug.Assert(mAstSpawn != null);
+		audioSource = GetComponent<AudioSource>();
+		GlobalBehavior.sTheGlobalBehavior = this;  // Singleton pattern
 
         #region world bound support
         mMainCamera = Camera.main; // This is the default main camera
@@ -56,7 +59,11 @@ public class GlobalBehavior : MonoBehaviour {
 				SceneManager.LoadScene("MainScene");
 			}
 		}
-	
+		if (Input.GetKeyDown(KeyCode.M))
+		{
+			audioSource.mute = !audioSource.mute;
+		}
+
 	} 
 
     #region Game Window World size bound support

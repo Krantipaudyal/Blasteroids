@@ -15,6 +15,7 @@ public class AsteroidBehavior : MonoBehaviour
         if (transform.position.y <= -88)
         {
             Destroy(gameObject);
+            GlobalBehavior.sTheGlobalBehavior.mAstSpawn.lowerCounter();
         }
     }
 
@@ -47,6 +48,7 @@ public class AsteroidBehavior : MonoBehaviour
         {
             Destroy(gameObject);
             GlobalBehavior.sTheGlobalBehavior.mLaserStat.IncScore(100);
+            GlobalBehavior.sTheGlobalBehavior.mAstSpawn.lowerCounter();
         }
     }
 }

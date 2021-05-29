@@ -24,7 +24,7 @@ public class PlanetScript : MonoBehaviour
     public int shots = 0;
     public int shotsTot = 3;
     public int flashes = 0;
-
+    private bool hundredK = false;
 
     private bool hasBeenFireState = false;
 
@@ -41,6 +41,15 @@ public class PlanetScript : MonoBehaviour
         updateFSM();
         transform.Rotate(Vector3.forward, -0.1f);
         // ProcessLaserSpwan();
+        if (GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() % 10000==0 && GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() != 0)
+        {
+            if (hundredK == false)
+            {
+                addPlanetHealth();
+                GlobalBehavior.sTheGlobalBehavior.mAstSpawn.incMaxSpawned(10);
+                hundredK = true;
+            }
+        }
 
         if (GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() > 10000)
         {
@@ -49,6 +58,7 @@ public class PlanetScript : MonoBehaviour
             newScore!= 0 &&
             GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetCanUseAbility())
             {
+                GlobalBehavior.sTheGlobalBehavior.mAstSpawn.incMaxSpawned(1);
                 if ((newScore % 3000) == 0)
                 {
                     GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
@@ -68,6 +78,7 @@ public class PlanetScript : MonoBehaviour
                 GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() != 0 &&
                 GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetCanUseAbility())
             {
+                GlobalBehavior.sTheGlobalBehavior.mAstSpawn.incMaxSpawned(1);
                 if ((GlobalBehavior.sTheGlobalBehavior.mLaserStat.GetScore() % 2000) == 0)
                 {
                     GlobalBehavior.sTheGlobalBehavior.mLaserStat.UseAbility();
@@ -107,6 +118,7 @@ public class PlanetScript : MonoBehaviour
         {
             //print("collided with" + collision.gameObject.name);
             Destroy(collision.gameObject);
+            GlobalBehavior.sTheGlobalBehavior.mAstSpawn.lowerCounter();
             if (pState == PlanetState.normalState || pState == PlanetState.hitState)
             {
                 planetHealth--;

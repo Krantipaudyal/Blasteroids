@@ -53,6 +53,7 @@ public class HeroBehavior : MonoBehaviour {
         {
             print("collided with" + collision.gameObject.name);
             Destroy(collision.gameObject);
+            GlobalBehavior.sTheGlobalBehavior.mAstSpawn.lowerCounter();
             heroHealth--;
             if (heroHealth==0)
             {
