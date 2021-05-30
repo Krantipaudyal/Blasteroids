@@ -9,6 +9,7 @@ public class LaserStatSystem : MonoBehaviour
     public Scrollbar mLaserInterval = null;
     public RectTransform mLaserShotTime = null;
     private const float kInitLaserShotSize = 50f;
+    public RectTransform laserOverheatMeter = null;
 
 
 
@@ -16,6 +17,9 @@ public class LaserStatSystem : MonoBehaviour
     private GameObject laser = null;
     // handle correct cool off time
     private float mSpawnLaserAt = 0f;
+
+    private int laserOverheat = 0;
+    private int counter = 0;
 
     // Score
     public int difficulty = 0;
@@ -27,10 +31,21 @@ public class LaserStatSystem : MonoBehaviour
     {
         Debug.Assert(mLaserInterval != null);
         Debug.Assert(mLaserShotTime != null);
+        //Debug.Assert(laserOverheatMeter != null);
         mLaserInterval.value = 0.2f; //Fire rate
         laser = Resources.Load<GameObject>("Prefabs/GLaser");
 
         //mSpawnEggAt = Time.realtimeSinceStartup - mEggInterval.value ; // assume one was shot
+    }
+
+    private void FixedUpdate()
+    {
+        counter++;
+        if(counter >= 20)
+        {
+            laserOverheat--;
+            counter = 0;
+        }
     }
 
     void Update()
@@ -60,7 +75,15 @@ public class LaserStatSystem : MonoBehaviour
     #region Spawning support
     public bool CanSpawn()
     {
-        return TimeTillNext() <= 0f;
+        if(TimeTillNext() <= 0f && laserOverheat < 10)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        //return TimeTillNext() <= 0f;
     }
 
     public float TimeTillNext()
@@ -72,6 +95,7 @@ public class LaserStatSystem : MonoBehaviour
     public void SpawnLaser(Vector3 p, Vector3 dir)
     {
         //Debug.Assert(CanSpawn());
+        laserOverheat++;
         GameObject e = GameObject.Instantiate(laser);// as GameObject;
         LaserBehavior Laser = e.GetComponent<LaserBehavior>(); // Shows how to get the script from GameObject
         if (null != Laser)
