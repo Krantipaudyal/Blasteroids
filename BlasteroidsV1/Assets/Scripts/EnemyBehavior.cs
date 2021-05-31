@@ -12,15 +12,19 @@ public class EnemyBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position += (mSpeed * Time.smoothDeltaTime) * transform.up;
-		GlobalBehavior globalBehavior = GameObject.Find ("GameManager").GetComponent<GlobalBehavior>();
-		
-		GlobalBehavior.WorldBoundStatus status = globalBehavior.ObjectCollideWorldBound(GetComponent<Renderer>().bounds);
-			
-		if (status != GlobalBehavior.WorldBoundStatus.Inside) {
-			Debug.Log("collided position: " + this.transform.position);
-			NewDirection();
-		}	
+		if (Time.timeScale > 0)
+		{
+			transform.position += (mSpeed * Time.smoothDeltaTime) * transform.up;
+			GlobalBehavior globalBehavior = GameObject.Find("GameManager").GetComponent<GlobalBehavior>();
+
+			GlobalBehavior.WorldBoundStatus status = globalBehavior.ObjectCollideWorldBound(GetComponent<Renderer>().bounds);
+
+			if (status != GlobalBehavior.WorldBoundStatus.Inside)
+			{
+				Debug.Log("collided position: " + this.transform.position);
+				NewDirection();
+			}
+		}
 	}
 
 	// New direction will be something completely random!

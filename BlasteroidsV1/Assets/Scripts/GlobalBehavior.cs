@@ -47,7 +47,8 @@ public class GlobalBehavior : MonoBehaviour {
         mMainCamera = Camera.main; // This is the default main camera
 		mWorldBound = new Bounds(Vector3.zero, Vector3.one);
 		UpdateWorldWindowBound();
-        #endregion
+		#endregion
+		Time.timeScale = 0;
     }
 
      //Update is called once per frame 
@@ -184,5 +185,4 @@ public class GlobalBehavior : MonoBehaviour {
 		mReset.text = "Press R to try again!";
 		isOver = true;
     }
-
 }

@@ -20,30 +20,33 @@ public class HeroBehavior : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Vector3 pos = transform.position;
-
-        var mouseScreenPos = Input.mousePosition;
-        var startingScreenPos = Camera.main.WorldToScreenPoint(transform.position);
-        mouseScreenPos.x -= startingScreenPos.x;
-        mouseScreenPos.y -= startingScreenPos.y;
-        var angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle-90));
-        
-
-        if (Input.GetKey(KeyCode.D) && pos.x <= 70)
+        if (Time.timeScale > 0)
         {
-            pos.x += speed * Time.deltaTime;
-        }
+            Vector3 pos = transform.position;
 
-        if (Input.GetKey(KeyCode.A) && pos.x >= -70)
-        {
-            pos.x -= speed * Time.deltaTime;
-        }
+            var mouseScreenPos = Input.mousePosition;
+            var startingScreenPos = Camera.main.WorldToScreenPoint(transform.position);
+            mouseScreenPos.x -= startingScreenPos.x;
+            mouseScreenPos.y -= startingScreenPos.y;
+            var angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
 
-        transform.position = pos;
-        //UpdateMotion();
-        BoundPosition();
-        ProcessLaserSpwan();
+
+            if (Input.GetKey(KeyCode.D) && pos.x <= 70)
+            {
+                pos.x += speed * Time.deltaTime;
+            }
+
+            if (Input.GetKey(KeyCode.A) && pos.x >= -70)
+            {
+                pos.x -= speed * Time.deltaTime;
+            }
+
+            transform.position = pos;
+            //UpdateMotion();
+            BoundPosition();
+            ProcessLaserSpwan();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
