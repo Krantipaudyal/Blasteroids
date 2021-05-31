@@ -7,7 +7,7 @@ public class LaserStatSystem : MonoBehaviour
 {
     // UI Support
     public Scrollbar mLaserInterval = null;
-    public RectTransform mLaserShotTime = null;
+    //public RectTransform mLaserShotTime = null;
     private const float kInitLaserShotSize = 50f;
     public RectTransform laserOverheatMeter = null;
 
@@ -30,8 +30,8 @@ public class LaserStatSystem : MonoBehaviour
     void Start()
     {
         Debug.Assert(mLaserInterval != null);
-        Debug.Assert(mLaserShotTime != null);
-        //Debug.Assert(laserOverheatMeter != null);
+        //Debug.Assert(mLaserShotTime != null);
+        Debug.Assert(laserOverheatMeter != null);
         mLaserInterval.value = 0.2f; //Fire rate
         laser = Resources.Load<GameObject>("Prefabs/GLaser");
 
@@ -105,18 +105,46 @@ public class LaserStatSystem : MonoBehaviour
         }
         mSpawnLaserAt = Time.realtimeSinceStartup;
     }
+
+    public void PlanetSpawnLaser(Vector3 p, Vector3 dir)
+    {
+        //Debug.Assert(CanSpawn());
+        //laserOverheat++;
+        GameObject e = GameObject.Instantiate(laser);// as GameObject;
+        LaserBehavior Laser = e.GetComponent<LaserBehavior>(); // Shows how to get the script from GameObject
+        if (null != Laser)
+        {
+            e.transform.position = p;
+            e.transform.up = dir;
+        }
+        mSpawnLaserAt = Time.realtimeSinceStartup;
+    }
+
     #endregion
 
     #region UI Support
+
     private void UpdateCoolDownUI()
     {
+
+        float percentage = laserOverheat / 10f;
+        Vector2 s = laserOverheatMeter.sizeDelta;
+        s.x = percentage * 80f;
+        laserOverheatMeter.sizeDelta = s;
+
+
+
+
+        /*
         float percentageT = TimeTillNext() / mLaserInterval.value;
 
         Vector2 s = mLaserShotTime.sizeDelta;  // This is the WidthxHeight [in pixel units]
         s.x = percentageT * kInitLaserShotSize;
         mLaserShotTime.sizeDelta = s;
+        */
 
     }
+    
     #endregion
 
     // Count support

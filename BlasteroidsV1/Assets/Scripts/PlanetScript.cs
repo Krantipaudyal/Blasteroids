@@ -279,7 +279,7 @@ public class PlanetScript : MonoBehaviour
 
         for (int i = -100; i <= 100; i += 5)
         {
-            mLaserStat.SpawnLaser(new Vector3(i, -60), new Vector3(i, 300));
+            mLaserStat.PlanetSpawnLaser(new Vector3(i, -60), new Vector3(i, 300));
         }
 
     }
