@@ -16,11 +16,11 @@ public class PlanetScript : MonoBehaviour
 
     public int planetHealth = 4;
     private PlanetState pState = PlanetState.normalState;
-    public float invTime = 1600f;
-    public float hurtTime = 8f;
+    public float invTime = 1050;
+    public float hurtTime = 10;
     private int stateFrameTick = 0;
     public LaserStatSystem mLaserStat = null;
-    public float fireTime = 30f;
+    public float fireTime = 22;
     public int shots = 0;
     public int shotsTot = 3;
     public int flashes = 0;
@@ -36,7 +36,7 @@ public class PlanetScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!GlobalBehavior.sTheGlobalBehavior.isPaused)
         {
@@ -95,8 +95,8 @@ public class PlanetScript : MonoBehaviour
                 }
             }
 
-            //This is just to test the invincible state, delete later
-            if (Input.GetKeyDown(KeyCode.I))
+            //This is just to test the invincible state, comment out later
+         /*   if (Input.GetKeyDown(KeyCode.I))
             {
                 stateFrameTick = 0;
                 pState = PlanetState.invincibleState;
@@ -108,7 +108,7 @@ public class PlanetScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 pState = PlanetState.fireState;
-            }
+            }*/
         }
     }
 

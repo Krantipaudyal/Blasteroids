@@ -480,10 +480,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetHealth: 4
-  invTime: 3000
-  hurtTime: 30
+  invTime: 1050
+  hurtTime: 10
   mLaserStat: {fileID: 358654687}
-  fireTime: 90
+  fireTime: 22
   shots: 0
   shotsTot: 3
   flashes: 0

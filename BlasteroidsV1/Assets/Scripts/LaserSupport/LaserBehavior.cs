@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaserBehavior : MonoBehaviour
 {
-    private const float kLaserSpeed = 80f;
+    private const float kLaserSpeed = 80;
     private float SpawnTime = 0f;
     // Start is called before the first frame update
     void Start()
@@ -13,7 +13,7 @@ public class LaserBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.position += transform.up * (kLaserSpeed * Time.smoothDeltaTime);
 
