@@ -12,7 +12,7 @@ public class EnemyBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.timeScale > 0)
+		if (!GlobalBehavior.sTheGlobalBehavior.isPaused)
 		{
 			transform.position += (mSpeed * Time.smoothDeltaTime) * transform.up;
 			GlobalBehavior globalBehavior = GameObject.Find("GameManager").GetComponent<GlobalBehavior>();

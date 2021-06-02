@@ -38,7 +38,7 @@ public class PlanetScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale > 0)
+        if (!GlobalBehavior.sTheGlobalBehavior.isPaused)
         {
             updateFSM();
             transform.Rotate(Vector3.forward, -0.1f);

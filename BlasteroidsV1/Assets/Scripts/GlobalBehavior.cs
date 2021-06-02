@@ -10,6 +10,8 @@ public class GlobalBehavior : MonoBehaviour {
     public LaserStatSystem mLaserStat = null;
 	public asteroidSpawnSystem mAstSpawn= null;
 
+	public GameObject[] pauseObjects;
+	public GameObject[] gameUI;
 
     public Text mGameStateEcho = null;  // Defined in UnityEngine.UI
 	public Text mShipHealth = null;
@@ -17,8 +19,9 @@ public class GlobalBehavior : MonoBehaviour {
 	public Text mGameOver = null;
 	public Text mReset = null;
 	private bool isOver = false;
-	public AudioSource audioSource=null;
+	//public AudioSource audioSource=null;
 	//public LaserStatSystem mLaserStat = null;
+	public bool isPaused;
 
 
 	#region World Bound support
@@ -38,17 +41,26 @@ public class GlobalBehavior : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Debug.Assert(mLaserStat != null);
+		Debug.Assert(mLaserStat != null);
 		Debug.Assert(mAstSpawn != null);
-		audioSource = GetComponent<AudioSource>();
+		//audioSource = GetComponent<AudioSource>();
 		GlobalBehavior.sTheGlobalBehavior = this;  // Singleton pattern
+
+		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+		gameUI = GameObject.FindGameObjectsWithTag("GameUI");
+		hidePause();
+		foreach (GameObject g in gameUI)
+        {
+			g.SetActive(SceneManager.GetActiveScene().name == "MainScene");
+        }
+		isPaused = !(SceneManager.GetActiveScene().name == "MainScene");
 
         #region world bound support
         mMainCamera = Camera.main; // This is the default main camera
 		mWorldBound = new Bounds(Vector3.zero, Vector3.one);
 		UpdateWorldWindowBound();
 		#endregion
-		Time.timeScale = 0;
+		//Time.timeScale = 0;
     }
 
      //Update is called once per frame 
@@ -57,13 +69,15 @@ public class GlobalBehavior : MonoBehaviour {
         {
 			if (Input.GetKey(KeyCode.R))
 			{
+				Time.timeScale = 1;
+				isPaused = false;
 				SceneManager.LoadScene("MainScene");
 			}
 		}
-		if (Input.GetKeyDown(KeyCode.M))
-		{
-			audioSource.mute = !audioSource.mute;
-		}
+		if (Input.GetKeyDown(KeyCode.P))
+        {
+			ManagePause();
+        }
 
 	} 
 
@@ -181,8 +195,53 @@ public class GlobalBehavior : MonoBehaviour {
 
 	public void UpdateGameOver()
     {
+		Time.timeScale = 0;
 		mGameOver.text = "Game Over";
 		mReset.text = "Press R to try again!";
 		isOver = true;
+		this.isPaused = true;
     }
+
+	public void LoadLevel(string level)
+    {
+		foreach (GameObject g in gameUI)
+        {
+			g.SetActive(SceneManager.GetActiveScene().name == "MainScene");
+        }
+		Time.timeScale = 1;
+		SceneManager.LoadScene(level);
+    }
+
+	public void ManagePause()
+	{
+		if (Time.timeScale == 1)
+		{
+			Time.timeScale = 0;
+			showPause();
+			this.isPaused = true;
+		}
+		else
+		{
+			Time.timeScale = 1;
+			hidePause();
+			this.isPaused = false;
+		}
+	}
+
+
+	public void showPause()
+	{
+		foreach (GameObject g in pauseObjects)
+		{
+			g.SetActive(true);
+		}
+	}
+
+	public void hidePause()
+	{
+		foreach (GameObject g in pauseObjects)
+		{
+			g.SetActive(false);
+		}
+	}
 }

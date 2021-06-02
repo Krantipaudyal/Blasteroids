@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class MusicScript : MonoBehaviour
 {
-    public AudioSource audioSource1 = null;
-    public AudioSource audioSource2 = null;
-    private int songNum = 1;
+    public AudioSource audioSource = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            audioSource.mute = !audioSource.mute;
+        }
      /*   if (Input.GetKeyDown(KeyCode.M))
         {
             if (songNum == 1)

@@ -20,7 +20,7 @@ public class HeroBehavior : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Time.timeScale > 0)
+        if (!GlobalBehavior.sTheGlobalBehavior.isPaused)
         {
             Vector3 pos = transform.position;
 

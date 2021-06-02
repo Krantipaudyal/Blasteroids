@@ -8,6 +8,8 @@ TagManager:
   - Laser
   - ShowOnPause
   - GameUI
+  - event
+  - music
   layers:
   - Default
   - TransparentFX

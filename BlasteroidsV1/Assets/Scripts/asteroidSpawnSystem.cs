@@ -21,13 +21,16 @@ public class asteroidSpawnSystem : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        difficulty = GlobalBehavior.sTheGlobalBehavior.mLaserStat.difficulty;
-        spawnRate = 250 - difficulty;
-        //Debug.Log(counter);
-        //counter++;
-        if (counter < maxSpawned)
+        if (!GlobalBehavior.sTheGlobalBehavior.isPaused)
         {
-            spawnAsteroid();
+            difficulty = GlobalBehavior.sTheGlobalBehavior.mLaserStat.difficulty;
+            spawnRate = 250 - difficulty;
+            //Debug.Log(counter);
+            //counter++;
+            if (counter < maxSpawned)
+            {
+                spawnAsteroid();
+            }
         }
     }
 
