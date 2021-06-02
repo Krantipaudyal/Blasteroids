@@ -16,7 +16,7 @@ public class PlanetScript : MonoBehaviour
 
     public int planetHealth = 4;
     private PlanetState pState = PlanetState.normalState;
-    public float invTime = 1050;
+    public float invTime = 350;
     public float hurtTime = 10;
     private int stateFrameTick = 0;
     public LaserStatSystem mLaserStat = null;

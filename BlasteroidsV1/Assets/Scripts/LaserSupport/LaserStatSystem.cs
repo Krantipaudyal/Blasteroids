@@ -41,7 +41,7 @@ public class LaserStatSystem : MonoBehaviour
     private void FixedUpdate()
     {
         counter++;
-        if(counter >= 20)
+        if(counter >= 20 && laserOverheat > 0)
         {
             laserOverheat--;
             counter = 0;
