@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaserBehavior : MonoBehaviour
 {
-    private const float kLaserSpeed = 80;
+    private const float kLaserSpeed = 100;
     private float SpawnTime = 0f;
     // Start is called before the first frame update
     void Start()

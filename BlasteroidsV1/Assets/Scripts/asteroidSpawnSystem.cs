@@ -12,7 +12,7 @@ public class asteroidSpawnSystem : MonoBehaviour
     public int spawnRate = 250;
 
     private int counter = 0;
-    private int maxSpawned = 4;
+    private int maxSpawned = 3;
     void Start()
     {
 
@@ -82,7 +82,11 @@ public class asteroidSpawnSystem : MonoBehaviour
     }
     public void lowerCounter()
     {
-        counter--;
+        if (counter > 0)
+        {
+            counter--;
+        }
+        
       //  Debug.Log("LowCount: "+counter);
     }
     public void incMaxSpawned(int i)

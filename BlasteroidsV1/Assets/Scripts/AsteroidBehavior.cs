@@ -9,13 +9,36 @@ public class AsteroidBehavior : MonoBehaviour
     public Sprite sprite1;
     public Sprite sprite2;
     public Sprite sprite3;
+    public float rotateRate = 0;
+    private int spin = 0;
+
 
     private void Update()
     {
-        if (transform.position.y <= -88)
+        if (!GlobalBehavior.sTheGlobalBehavior.isPaused)
         {
-            Destroy(gameObject);
-            GlobalBehavior.sTheGlobalBehavior.mAstSpawn.lowerCounter();
+            if (transform.position.x % 5 == 1 || transform.position.x * -1 % 5 == 1)
+            {
+                rotateRate = 0.1f;
+            }
+            else if (transform.position.x % 5 == 2 || transform.position.x * -1 % 5 == 2)
+            {
+                rotateRate = -0.1f;
+            }
+            else if (transform.position.x % 5 == 3 || transform.position.x * -1 % 5 == 3)
+            {
+                rotateRate = 0.2f;
+            }
+            else if (transform.position.x % 5 == 4 || transform.position.x * -1 % 5 == 4)
+            {
+                rotateRate = -0.2f;
+            }
+            transform.Rotate(Vector3.forward, rotateRate);
+            if (transform.position.y <= -86)
+            {
+                Destroy(gameObject);
+                GlobalBehavior.sTheGlobalBehavior.mAstSpawn.lowerCounter();
+            }
         }
     }
 

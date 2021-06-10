@@ -10,6 +10,9 @@ public class HeroBehavior : MonoBehaviour {
     Vector2 mousePos;
     public Rigidbody2D rb2d;
     public int heroHealth=4;
+    private bool isHurt = false;
+    private int redCount = 10;
+    private int counter = 0;
 
     // Use this for initialization
 
@@ -19,7 +22,7 @@ public class HeroBehavior : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
         if (!GlobalBehavior.sTheGlobalBehavior.isPaused)
         {
             Vector3 pos = transform.position;
@@ -30,7 +33,10 @@ public class HeroBehavior : MonoBehaviour {
             mouseScreenPos.y -= startingScreenPos.y;
             var angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
-
+            if (isHurt == true)
+            {
+                isRed();
+            }
 
             if (Input.GetKey(KeyCode.D) && pos.x <= 70)
             {
@@ -54,7 +60,7 @@ public class HeroBehavior : MonoBehaviour {
         // Debug.Log("Emeny OnTriggerEnter");
         if(collision.gameObject.CompareTag("Asteroid"))
         {
-            print("collided with" + collision.gameObject.name);
+            //print("collided with" + collision.gameObject.name);
             Destroy(collision.gameObject);
             GlobalBehavior.sTheGlobalBehavior.mAstSpawn.lowerCounter();
             heroHealth--;
@@ -63,11 +69,29 @@ public class HeroBehavior : MonoBehaviour {
                 Destroy(gameObject);
                 GlobalBehavior.sTheGlobalBehavior.UpdateGameOver();
             }
+            else
+            {
+                isHurt = true;
+            }
             GlobalBehavior.sTheGlobalBehavior.UpdateShipHealth("Ship Health: " + heroHealth);
         }
     }
 
-
+    private void isRed()
+    {
+        if (counter >= redCount)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            counter = 0;
+            isHurt = false;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            counter++;
+        }
+        
+    }
 
     private void BoundPosition()
     {

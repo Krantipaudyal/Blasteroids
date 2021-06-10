@@ -16,8 +16,8 @@ public class PlanetScript : MonoBehaviour
 
     public int planetHealth = 4;
     private PlanetState pState = PlanetState.normalState;
-    public float invTime = 350;
-    public float hurtTime = 10;
+    public float invTime = 425;
+    public float hurtTime = 8;
     private int stateFrameTick = 0;
     public LaserStatSystem mLaserStat = null;
     public float fireTime = 22;
@@ -49,6 +49,7 @@ public class PlanetScript : MonoBehaviour
                 {
                     addPlanetHealth();
                     GlobalBehavior.sTheGlobalBehavior.mAstSpawn.incMaxSpawned(10);
+                    invTime += 75;
                     hundredK = true;
                 }
             }
@@ -96,7 +97,7 @@ public class PlanetScript : MonoBehaviour
             }
 
             //This is just to test the invincible state, comment out later
-         /*   if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.I))
             {
                 stateFrameTick = 0;
                 pState = PlanetState.invincibleState;
@@ -108,7 +109,7 @@ public class PlanetScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 pState = PlanetState.fireState;
-            }*/
+            }
         }
     }
 
@@ -246,7 +247,7 @@ public class PlanetScript : MonoBehaviour
         {
             stateFrameTick = 0;
             flashes++;
-            if (flashes >= 28)
+            if (flashes >= 20)
             {
                 flashes = 0;
                 pState = PlanetState.normalState;

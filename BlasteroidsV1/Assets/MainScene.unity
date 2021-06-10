@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetHealth: 4
-  invTime: 350
+  invTime: 425
   hurtTime: 10
   mLaserStat: {fileID: 358654687}
   fireTime: 22
@@ -1443,7 +1443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -74.40503, y: 47.3896}
+  m_AnchoredPosition: {x: -72, y: 29}
   m_SizeDelta: {x: 148.81, y: 51.4791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782414829
@@ -1479,9 +1479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Music by Eric Matyas
-
-    From Soundimage.org
+  m_Text: 'Press [P] to Pause
 
     Press [M] to Mute'
 --- !u!222 &782414830
@@ -2322,7 +2320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660550317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -31, z: 0}
+  m_LocalPosition: {x: 0, y: -40, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
