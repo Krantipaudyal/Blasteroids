@@ -34,7 +34,7 @@ public class AsteroidBehavior : MonoBehaviour
                 rotateRate = -0.2f;
             }
             transform.Rotate(Vector3.forward, rotateRate);
-            if (transform.position.y <= -86)
+            if (transform.position.y <= -85)
             {
                 Destroy(gameObject);
                 GlobalBehavior.sTheGlobalBehavior.mAstSpawn.lowerCounter();

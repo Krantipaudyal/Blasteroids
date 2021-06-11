@@ -97,7 +97,7 @@ public class PlanetScript : MonoBehaviour
             }
 
             //This is just to test the invincible state, comment out later
-            if (Input.GetKeyDown(KeyCode.I))
+         /*   if (Input.GetKeyDown(KeyCode.I))
             {
                 stateFrameTick = 0;
                 pState = PlanetState.invincibleState;
@@ -109,7 +109,7 @@ public class PlanetScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 pState = PlanetState.fireState;
-            }
+            }*/
         }
     }
 
