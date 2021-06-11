@@ -1443,8 +1443,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -72, y: 29}
-  m_SizeDelta: {x: 148.81, y: 51.4791}
+  m_AnchoredPosition: {x: -83.6, y: 48.5}
+  m_SizeDelta: {x: 148.81, y: 106.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782414829
 MonoBehaviour:
@@ -1473,15 +1473,22 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press [P] to Pause
+  m_Text: '[A] and [D] to Move
 
-    Press [M] to Mute'
+    Mouse to Aim
+
+    Left Click or Space to Shoot
+
+    [P]
+    to Pause
+
+    [M] to Mute'
 --- !u!222 &782414830
 CanvasRenderer:
   m_ObjectHideFlags: 0

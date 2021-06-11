@@ -5,7 +5,7 @@ using UnityEngine;
 public class AsteroidBehavior : MonoBehaviour
 {
 
-    private int hp = 4;
+    private int hp = 3;
     public Sprite sprite1;
     public Sprite sprite2;
     public Sprite sprite3;
@@ -48,16 +48,16 @@ public class AsteroidBehavior : MonoBehaviour
         {
             //Debug.Log("LaserColl");
             hp--;
-            if (hp == 3)
+            if (hp == 2)
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = sprite1;
 
             }
-            else if (hp == 2)
+           /* else if (hp == 2)
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
 
-            }
+            }*/
             else if (hp == 1)
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = sprite3;
